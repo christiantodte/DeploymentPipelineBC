@@ -1,0 +1,10 @@
+Set up a Premium Workspace using Embedded (pbipremiumexperimentalcapacity) the name for the Worspace should be your Initials+PipelinesBC_DEV
+Create deployment pipeline in that workspace
+Publish report to workspace
+Deploy to Test
+Change the dataset and publish the report
+Publish changes to Test (you cant see what changed only that i did change)
+Deploy to PROD
+Change the Datasource of the Dataset with Data source rules (you have to use parameter Rules) 
+Check the dataset in Prod 
+Redeploy to Prod and check again

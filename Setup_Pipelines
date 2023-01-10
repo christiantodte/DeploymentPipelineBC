@@ -1,10 +1,9 @@
-Set up a Premium Workspace using Embedded (pbipremiumexperimentalcapacity) the name for the Worspace should be your Initials+PipelinesBC_DEV
-Create deployment pipeline in that workspace
-Publish report to workspace
-Deploy to Test
-Change the dataset and publish the report
-Publish changes to Test (you cant see what changed only that i did change)
-Deploy to PROD
-Change the Datasource of the Dataset with Data source rules (you have to use parameter Rules) 
-Check the dataset in Prod 
-Redeploy to Prod and check again
+1. Set up a Premium Workspace using embedded (pbipremiumexperimentalcapacity) the name for the workspace should be YourInitials_PipelinesBC_DEV (e.g. CT_PipelinesBC_DEV)
+2. Create a deployment pipeline in that workspace with the same name
+3. Publish the sample report to workspace the workspace
+4. Deploy to Test and refresh the data. (Username:PowerBITraining,Password:PowerBI2022)
+5. Change the daterange of the dataset to 2 years and publish the report to Dev 
+6. Publish changes to Test (check the differences between report in Dev and in Test)
+7. Deploy to Prod
+8. Change the Datasource of the dataset with the use of deployment rules so that you get the Sales for Canada 
+9. Check the report and type in the "number of sales" for Canada in the poll

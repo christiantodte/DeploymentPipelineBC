@@ -1,9 +1,35 @@
-1. Set up a Premium Workspace using embedded (pbipremiumexperimentalcapacity) the name for the workspace should be YourInitials_PipelinesBC_DEV (e.g. CT_PipelinesBC_DEV)
-2. Create a deployment pipeline in that workspace with the same name
-3. Publish the sample report to workspace the workspace
-4. Deploy to Test and refresh the data. (Username:PowerBITraining,Password:PowerBI2022)
-5. Change the daterange of the dataset to 2 years and publish the report to Dev 
-6. Publish changes to Test (check the differences between report in Dev and in Test)
-7. Deploy to Prod
-8. Change the Datasource of the dataset with the use of deployment rules so that you get the Sales for Canada 
-9. Check the report and type in the "number of sales" for Canada in the poll
+1. Set up a Premium Workspace using the following naming convention: YourInitials_PipelinesBC (e.g. CT_PipelinesBC) on the embedded capacity: pbipremiumexperimentalcapacity
+2. Create a deployment pipeline iwith the same name naming convention (YourInitials_PipelinesBC)
+3. Assign the dev workspace to the corresponding environment.
+4. Publish the sample report to dev workspace.
+5. Deploy the report and dataset to Test and refresh the data. You probably have to authenticate against the source with basic authentication. We have the credentials for you: Username: PowerBITraining Password: PowerBI2022)
+6. Open the report and check if the data is available. 
+
+Question: Which country is shown? 
+Please provide your answer in the poll in teams, the poll is anonymous. (In this way we sneakily check how far everyone is)
+
+The imaginary users have tested the report.. and sadly we have loaded too much data. Therefore we will reduce the data in the dataset to meet the requirements of the users.
+
+7. Open the sample report and go to the query editor.
+8. Change the daterange of the sales table to 2 years with the code:
+Table.SelectRows(#"Removed Columns", each Date.IsInPreviousNYears([Date], 2))
+
+9. Close and Apply
+10. Publish the report to Dev 
+
+The report with the adjusted dataset is available on dev, but not on test.  You will see that the sales are lower in our dataset on dev, because we there is only two years of data in the dataset instead of six. This is exactly what the users wanted. Our users test the data on test, so we deploy the report and dataset to test to make sure the users can test our new dataset and report.
+
+11. Publish changes to Test and refresh the dataset. If you do not refresh the data, the applied changes will not be shown as the deployment pipeline only deploys the metadata. It doesn’t deploy the data itself.
+
+The users are happy with the report, we can deploy to production now, whoop whoop!
+
+12. Deploy everything to production and set the credentials of the source again (basic authentication and same credentials) and refresh the dataset.
+
+The next step is to switch the source of the dataset. We have used test data so far, but it’s important that we show production data in production. We would like to switch the data source in production automatically so the production dataset and report actually contains production data. We can do this with the help of the deployment rule.
+
+13. Change the Datasource of the dataset with the use of deployment rules of the production workspace as shown in the demo. This source is called: CanadaSales
+
+14. Deploy the dataset and report from test again to production, otherwise the deployment rule will not be applied.
+15. Don’t forget to refresh the dataset!! Otherwise the report will still show the test data and that’s definitely not what we want. 
+176 Check the report and fill in the "number of sales" for Canada in the poll.
+

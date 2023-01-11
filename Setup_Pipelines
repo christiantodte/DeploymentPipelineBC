@@ -31,5 +31,6 @@ The next step is to switch the source of the dataset. We have used test data so 
 
 14. Deploy the dataset and report from test again to production, otherwise the deployment rule will not be applied.
 15. Don’t forget to refresh the dataset!! Otherwise the report will still show the test data and that’s definitely not what we want. 
-16. Check the report and fill in the "number of sales" for Canada in the poll.
 
+Question: What is the amount of sales shown?
+Please provide your answer in the poll in teams. 

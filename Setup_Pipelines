@@ -2,7 +2,7 @@
 2. Create a deployment pipeline iwith the same name naming convention (YourInitials_PipelinesBC)
 3. Assign the dev workspace to the corresponding environment.
 4. Publish the sample report to dev workspace.
-5. Deploy the report and dataset to Test and refresh the data. You probably have to authenticate against the source with basic authentication. We have the credentials for you: Username: PowerBITraining Password: PowerBI2022)
+5. Deploy the report and dataset to Test and refresh the data. You probably have to authenticate against the source with basic authentication. We have the credentials for you in de slides shown.
 6. Open the report and check if the data is available. 
 
 Question: Which country is shown? 

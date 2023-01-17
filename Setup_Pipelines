@@ -1,35 +1,35 @@
-1. Set up a Premium Workspace using the following naming convention: YourInitials_PipelinesBC (e.g. CT_PipelinesBC) on the embedded capacity: pbipremiumexperimentalcapacity
-2. Create a deployment pipeline with the same name naming convention (YourInitials_PipelinesBC_DEV)
-3. Assign the DEV workspace to the DEV environment in the deployment pipeline.
+1. Set up a Premium Workspace using the following naming convention: YourInitials_PipelinesBC (e.g. CT_PipelinesBC) on the embedded capacity: pbipremiumexperimentalcapacity.
+2. Create a deployment pipeline with the same name naming convention (YourInitials_PipelinesBC_DEV).
+3. Assign the DEV workspace to the DEV stage in the deployment pipeline.
 4. Publish the sample report to the DEV workspace.
 5. Deploy the report and dataset to TEST. A workspace is automatically created, but the name is not correct. Please rename the workspace to YourInitials_PipelinesBC_TST. 
-6. Refresh the data. You probably have to authenticate against the source with basic authentication. We have the credentials for you in de slides shown.
+6. Refresh the data. You probably have to authenticate the source with basic authentication. We have the credentials for you in the slides.
 7. Open the report and check if the data is available. 
 
 Question: Which country is shown? 
-Please provide your answer in the poll in teams; the poll is anonymous. (In this way, we sneakily check how far everyone is)
+Please provide your answer in the poll in Teams; the poll is anonymous. (In this way, we sneakily check how far everyone is)
 
-The imaginary users have tested the report.. and sadly, we have loaded too much data. Therefore we will reduce the data in the dataset to meet the requirements of the users.
+The imaginary users have tested the report... and sadly, we have loaded too much data. Therefore we will reduce the data in the dataset to meet users' requirements.
 
 8. Open the sample report and go to the query editor.
-9. Change the daterange of the sales table to 2 years with the code:
-Table.SelectRows(#"Removed Columns", each Date.IsInPreviousNYears([Date], 2))
+9. Change the "daterange" step of the sales table to 2 years with the code:
+Table.SelectRows(#"Removed Columns", each Date.IsInPreviousNYears([Date], 2)).
 
-10. Close and Apply
-11. Publish the report to DEV
+10. Close and Apply.
+11. Publish the report to DEV.
 
-The report with the adjusted dataset is available on DEV but not on the Test.  You will see that the sales are lower in our dataset on DEV because there are only two years of data in the dataset instead of six. This is exactly what the users wanted. Our users test the data on the Test, so we deploy the report and dataset to test to make sure the users can test our new dataset and report.
+The report with the adjusted dataset is available in DEV but not in the TEST workspace. You will see that the sales are lower in our dataset on DEV because there are only two years of data in the dataset instead of six. This is exactly what the users wanted. Since our users test the data in the TEST workspace, we deploy the report and dataset to it.
 
-12. Publish changes to TEST and refresh the dataset. If you do not refresh the data, the applied changes will not be shown, as the deployment pipeline only deploys the metadata. It doesn’t deploy the data itself.
+12. Deploy changes to TEST and refresh the dataset. If you do not refresh the data, the applied changes will not be shown, as the deployment pipeline only deploys the metadata. It doesn’t deploy the data itself.
 
 The users are happy with the report. We can deploy to production now, whoop whoop!
 
 13. Deploy everything to PROD. A workspace is automatically created, but the name is not correct. Please rename the workspace to YourInitials_PipelinesBC_PRD. 
-14. Set the source's credentials again (basic authentication and same credentials), and refresh the dataset.
+14. Set the source's credentials again (basic authentication and same credentials) and refresh the dataset.
 
-The next step is to switch the source of the dataset. We have used test data so far, but it’s important that we show production data in production. We would like to switch the data source in production automatically so the production dataset and report actually contain production data. We can do this with the help of the deployment rule.
+The next step is to switch the source of the dataset. We have used test data so far, but it’s important that we show production data in production. We would like to switch the data source in production automatically. We can do this with the help of the deployment rule.
 
-15. Change the Datasource of the dataset with the use of deployment rules of the production workspace, as shown in the demo. The new source is called: CanadaSales
+15. Change the dataset's datasource using deployment rules in the production stage, as shown in the demo. The new source is called: CanadaSales.
 
 16. Deploy the dataset and report from the TEST again to PROD. Otherwise, the deployment rule will not be applied.
 17. Don’t forget to refresh the dataset!! Otherwise, the report will still show the test data, and that’s definitely not what we want. 
